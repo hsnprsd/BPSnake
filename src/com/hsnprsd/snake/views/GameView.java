@@ -19,10 +19,9 @@ public class GameView extends JFrame {
 
     public void showGrid() {
         int n = Config.n;
-        int m = Config.m;
         char[][] grid = gameModel.getGrid();
         for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < m; ++j) {
+            for (int j = 0; j < n; ++j) {
                 if (grid[i][j] == '.') {
                     this.grid[i][j].setBackground(Color.WHITE);
                 } else if (grid[i][j] == 'S') {
@@ -44,12 +43,11 @@ public class GameView extends JFrame {
         setSize(640, 640);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setFocusable(true);
-        setLayout(new GridLayout(Config.n, Config.m));
         int n = Config.n;
-        int m = Config.m;
-        grid = new JButton[n][m];
+        setLayout(new GridLayout(n, n));
+        grid = new JButton[n][n];
         for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < m; ++j) {
+            for (int j = 0; j < n; ++j) {
                 JButton button = new JButton();
                 button.setFocusable(false);
                 button.setBackground(Color.WHITE);

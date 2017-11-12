@@ -18,10 +18,9 @@ public class GameController {
 
     public void createApple() {
         int n = Config.n;
-        int m = Config.m;
-        int r = (int) (Math.random() * n * m);
-        if (gameModel.isEmpty(new Pixel(r / m, r % m))) {
-            gameModel.addApple(new Pixel(r / m, r % m));
+        int r = (int) (Math.random() * n * n);
+        if (gameModel.isEmpty(new Pixel(r / n, r % n))) {
+            gameModel.addApple(new Pixel(r / n, r % n));
         }
     }
 
@@ -33,7 +32,8 @@ public class GameController {
     public void startGame() throws InterruptedException {
         init();
         int currentCycle = 0;
-        while (Config.isRunning) {
+        boolean isGameEnded = false;
+        while (!isGameEnded) {
             gameView.showGrid();
             if (currentCycle % Config.cyclesPerApple == 0) {
                 createApple();
@@ -43,7 +43,7 @@ public class GameController {
                     int response = JOptionPane.showConfirmDialog(null, "Do you want to play again?", "?",
                             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (response == JOptionPane.NO_OPTION || response == JOptionPane.CLOSED_OPTION) {
-                        Config.isRunning = false;
+                    	isGameEnded = true;
                     } else if (response == JOptionPane.YES_OPTION) {
                         startGame();
                     }

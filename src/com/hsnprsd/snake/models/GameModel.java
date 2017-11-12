@@ -25,10 +25,9 @@ public class GameModel {
 
     public char[][] getGrid() {
         int n = Config.n;
-        int m = Config.m;
-        char[][] grid = new char[n][m];
+        char[][] grid = new char[n][n];
         for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < m; ++j) {
+            for (int j = 0; j < n; ++j) {
                 grid[i][j] = '.';
             }
         }

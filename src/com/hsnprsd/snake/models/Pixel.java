@@ -29,7 +29,8 @@ public class Pixel {
     public Pixel move(int direction) {
         int[] dx = {-1, 1, 0, 0};
         int[] dy = {0, 0, -1, 1};
-        return new Pixel((x + dx[direction] + Config.n) % Config.n, (y + dy[direction] + Config.m) % Config.m);
+        int n = Config.n;
+        return new Pixel((x + dx[direction] + n) % n, (y + dy[direction] + n) % n);
     }
 
     public boolean equals(Pixel pixel) {
