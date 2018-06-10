@@ -1,1 +1,1 @@
-Snake game written in Java.
+GUI-based snake game written in Java.
